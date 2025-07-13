@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t ayushman2711/jekins-project  .'
-                    withCredentials([usernamePassword(credentialsId: 'akdockercred', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
                         sh 'docker push ayushman2711/jekins-project '
                     }
